@@ -2,7 +2,7 @@
 While attempting to shrink a volume using diskpart in Windows you receive an error stating: The specified shrink size is too big and will cause the volume to be smaller than the minimum volume size. This is what you should do in this scenario.  
 
 ## Make sure ...  
-   - That the partition you are shrinking is (*for lack of better words*) the **last** partition on the disk. Open **diskmgmt.msc**, observe you're target partition on your target disk from left to right. Is there anything to the **right** of your target partition that isn't unallocated space?
+   - That the partition you are shrinking is (*for lack of better words*) the **last** partition on the disk. Open **diskmgmt.msc** and observe your target disk from left to right. Is there anything to the **right** of your target partition that isn't unallocated space?
    - You've explicitly told Windows **not** to use pagefile.sys.
        - This can be accomplished via: <img height=16px width=auto src="https://raw.githubusercontent.com/nstevens1040/images/main/winkey.svg"/>  → sysdm.cpl → Advanced → Performance \[Settings\] → Advanced → Change → No paging file → **Don't forget to click 'Set'!**
    - You have the correct volume selected? ```SELECT VOLUME 0```
