@@ -4,7 +4,7 @@ While attempting to shrink a volume using diskpart in Windows you receive an err
 ## Make sure  
    - That the partition you are shrinking is (*for lack of better words*) the **last** partition on the disk
    - You've explicitly told Windows **not** to use pagefile.sys.
-       - This can be accomplished via: <img height=16px width=auto src="https://raw.githubusercontent.com/nstevens1040/images/main/winkey.svg"/>  → sysdm.cpl → Advanced → Performance `[Settings`] → Advanced → Change → No paging file → **Don't forget to click 'Set'!**
+       - This can be accomplished via: <img height=16px width=auto src="https://raw.githubusercontent.com/nstevens1040/images/main/winkey.svg"/>  → sysdm.cpl → Advanced → Performance \[Settings\] → Advanced → Change → No paging file → **Don't forget to click 'Set'!**
    - You have the correct volume selected? ```SELECT VOLUME 0```
    - Can the volume reasonably accommodate the shrink operation?  
       - To be specific, here is an example. Let's say I want to shink my current volume by 20GB (20480MB). If the following PowerShell command evaluates to **True**, then you're **"not crazy"**: ```(((Get-Partition -DriveLetter C | % Size) - (Get-PSDrive -Name C | % Used)) / 1MB) -gt 20480```
