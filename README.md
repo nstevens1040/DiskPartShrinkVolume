@@ -16,12 +16,12 @@ Specifically, if you are seeing this error,
 The specified shrink size is too big and will cause the volume to be smaller than the minimum volume size
 ```  
   
-then you can determine exactly which file or folder is causing the failure by using the **Windows PowerShell** script below.  
+then you can view relevant event logs using the **Windows PowerShell** script below (**Run As Admin**).  
 ```ps1
 @((Get-WinEvent -FilterXml "`n<QueryList>`n  <Query Id=`"0`" Path=`"Application`">`n    <Select Path=`"Application`">*[System[(EventID=259 or EventID=260 or EventID=261)]]</Select>`n  </Query>`n</QueryList>") | Sort TimeCreated -Descending)
 ```  
   
-If you're certain that the most recent event that the script returns is relevant, then the script below will tell you the exact file or folder path that is causing problems.  
+If you're certain that the most recent event that the script returns is relevant, then the script below will tell you the exact file or folder path that is causing problems (**Run As Admin**).  
 ```ps1
 @((Get-WinEvent -FilterXml "`n<QueryList>`n  <Query Id=`"0`" Path=`"Application`">`n    <Select Path=`"Application`">*[System[(EventID=259 or EventID=260 or EventID=261)]]</Select>`n  </Query>`n</QueryList>") | Sort TimeCreated -Descending)[0].Properties[2].Value
 ```  
